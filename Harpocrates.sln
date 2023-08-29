@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpocrates.API", "Harpocrates.API\Harpocrates.API.csproj", "{27649263-D198-4DFE-8901-EB57D85070E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpocrates", "Harpocrates\Harpocrates.csproj", "{27649263-D198-4DFE-8901-EB57D85070E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
