@@ -11,3 +11,4 @@ jobs:
           BASE_TAG: harpocrates
           TAG_NAME: $(git rev-parse --short "$GITHUB_SHA")
           IMAGE_NAME: harpocrates
+          DOCKERFILE_PATH: ./Harpocrates/Dockerfile
