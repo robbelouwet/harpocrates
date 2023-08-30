@@ -5,16 +5,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Harpocrates.API/Harpocrates.API.csproj", "Harpocrates.API/"]
-RUN dotnet restore "Harpocrates.API/Harpocrates.API.csproj"
+COPY ["Harpocrates/Harpocrates.csproj", "Harpocrates/"]
+RUN dotnet restore "Harpocrates/Harpocrates.csproj"
 COPY . .
-WORKDIR "/src/Harpocrates.API"
-RUN dotnet build "Harpocrates.API.csproj" -c Release -o /app/build
+WORKDIR "/src/Harpocrates"
+RUN dotnet build "Harpocrates.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Harpocrates.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Harpocrates.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Harpocrates.API.dll"]
+ENTRYPOINT ["dotnet", "Harpocrates.dll"]
