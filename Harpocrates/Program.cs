@@ -10,7 +10,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<CosmosClient>(_ =>
-    new CosmosClient(builder.Configuration.GetSection("CosmosDBConnectionString").Get<string>())
+    new CosmosClient(
+        builder.Environment.IsDevelopment()
+            ? builder.Configuration.GetSection("CosmosDBConnectionString").Get<string>()
+            : Environment.GetEnvironmentVariable("cosmosdb-connection-string")
+    )
 );
 
 var app = builder.Build();
