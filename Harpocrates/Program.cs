@@ -13,7 +13,7 @@ builder.Services.AddSingleton<CosmosClient>(_ =>
     new CosmosClient(
         builder.Environment.IsDevelopment()
             ? builder.Configuration.GetSection("CosmosDBConnectionString").Get<string>()
-            : Environment.GetEnvironmentVariable("cosmosdb-connection-string")
+            : Environment.GetEnvironmentVariable("CosmosDBConnectionString")
     )
 );
 
